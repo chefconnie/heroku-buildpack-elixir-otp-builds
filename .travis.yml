@@ -1,30 +1,26 @@
 sudo: required
 language: python
 python:
-  - '2.7'
-
+- '2.7'
 env:
-  - HEROKU_STACK=heroku-18
-
+- HEROKU_STACK=heroku-18
 services:
-  - docker
-
-
+- docker
 branches:
   only:
-    - master
-
+  - master
 install: true
 script: bash build.sh
 deploy:
   provider: s3
+  endpoint: https://sfo2.digitaloceanspaces.com
   skip_cleanup: true
-  access_key_id: AKIAI3U3FZ7PNMN5TRGA
+  access_key_id: WMNE3YDAHTSHGVWXUHOZ
   secret_access_key:
-    secure: VBru6/qeYboyoyHPHEsyhjWd5AMZyaqX9CnZeIqUFgiUvnvYpB3VamFEHhBxu96sJRjjLK9XmtfV6JxZ3ljbqOXfKoepD2KRaDnj5cQd37LAsXbpPh59XhXgX3pEh1/qdzlaarU7/W69pDznNiSaWD7OGillMh49RcFNmflbdozdmVV9iuY/RXZe6y4g6QsCZI1C4/N1XdtO2vm79F3Ive7JT7C5Pn7g362PB2u51kam8AW6el/ZWAYEq/8hCZ7I14ruChOiIF93k24O2V/7cgZEQm9QGlkFaVW66Nxs5vBo73G19wxFK+/prHBDO8f5UOQbx29BfSZdzpMsVlBle9XPcs4/uuulsvZ9PDYh8fCrB2w02LQEK1d2a8p5R6fREsDEudfh+IApbtwSB4qm/g+RgZiN1A1dqZmk99WKCE5amxk4qQFLGUjzkDI3l+fvojZiyQEaYT6yjIANSX8rQmFtDdvM4lQSKVf+cOeZUZzKPZiN3SJnPJsWKYPg5CwKeOL5RbxpuMXtWc4kch8uSbDPyFzog3iim6L/0xgvqOn41HR5b5VRvTJaaGA52faifxyrfaoXnhJTADSfrHHOjj6xOWNjCIkyto1yJgS7Sq7qPMqLdhSeb+g07t09zaPQ0enxOipu9uIBw2GUhkkzdKfOXfQNBuDeNlZ0OusZLvk=
+    secure: AiCra48yidto4/jyrcEAZOoco+8oib4yB+YdrIqGXpGyuo7s8siQs3MUEKnuBC/vgF9a+WKtVPX3FJbAUxJ3wU35vmqwpi26DBxroMDKJjOVXl1EEEvN7Qmz6Tv1RfcEAn9J5W0aWZpRcrX0I6Cx++NOhG2TB/9/zFa4B39XlICyRJBk6grXYBgA3sug5wlgA/Ef5bdxT5yRBWqKLhHQGqy1ThFoa8Hw9cL3KMhHMzULiokpMr9evv4Ag7Hf6CX2VnhYFY+asDpNuJvN42vb307KMw6ZlhH8SRWv1TgyKZHezP8SxYcgCAGCtplODTLPA6R6iS7AbvFIvsR1VYet5nzWiGsyVfxGjJQDkJYaVA+rtyQDMgcxRt2dmed8pez5dhRgJAc4DSQ0p0Zzo48Qkz+KuhDQXy+tFukgKRGp3aKiRtkXR37WBy8KO4iEfgaEXjMhSBsvYrG9M8hcFlRRwD+NAEPcKAw6g5PAcFGKx6XNdMFPtLkvkTwqsIv0zI2suJRj6yOPG3/ppMdtI+vHtpYbA6JuS10yoxcx3X4VELlnE32zmtFkWS6HlHonLeggBUOhDVLiHnxyqGa0fIplFFLudYExkcHTfEBwA0GnxO4crnkTfqTaffrXr1R8dagb0Dfx9Pl9khr0JbPcLOpYZUEv9rNUxshXvipsD3JdnNo=
   bucket: heroku-buildpack-elixir
-  local-dir: $TRAVIS_BUILD_DIR/builds/otp
+  local-dir: "$TRAVIS_BUILD_DIR/builds/otp"
   upload-dir: erlang
   acl: public_read
   on:
-    repo: HashNuke/heroku-buildpack-elixir-otp-builds
+    repo: chefconnie/heroku-buildpack-elixir-otp-builds
